@@ -1,7 +1,9 @@
 
-var fs = require('fs');
+const fs = require('fs');
+const path = require('path');
+
  
-var stream = new fs.ReadStream("text.txt", {encoding: 'utf-8'});
+var stream = new fs.ReadStream(path.join(__dirname,'text.txt'), {encoding: 'utf-8'});
  
 stream.on('readable', function(){
     var data = stream.read();
@@ -19,7 +21,6 @@ stream.on('end', function(){
 
 /*
 Первоначальный вариант с readFile, а не ReadStream
-
 var fs = require('fs');
  
 fs.readFile("text.txt", function(err, data){
